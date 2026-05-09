@@ -1,0 +1,50 @@
+﻿@model TestProject.Models.OrderModel
+@{
+    ViewBag.Title = "Create Order";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default" style="padding:20px;">
+            <h3 class="text-center">Place an Order</h3>
+
+            @using (Html.BeginForm("CreateOrder", "Restaurant", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerName)
+                    @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control", placeholder = "Full name" })
+                    @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerPhone)
+                    @Html.TextBoxFor(model => model.CustomerPhone, new { @class = "form-control", placeholder = "Phone number" })
+                    @Html.ValidationMessageFor(model => model.CustomerPhone, "", new { @class = "text-danger" })
+                </div>
+
+                <h4>Menu</h4>
+                for (int i = 0; i < Model.FoodItemGroups.Count; i++)
+                {
+                    <div class="well">
+                        <strong>@Model.FoodItemGroups[i].ItemType</strong>
+                        <ul class="list-unstyled">
+                            @for (int j = 0; j < Model.FoodItemGroups[i].Items.Count; j++)
+                            {
+                                var foodItem = Model.FoodItemGroups[i].Items[j];
+                                <li>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="SelectedFoodItemIds" value="@foodItem.Id" /> @foodItem.ItemName
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Confirm Order</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

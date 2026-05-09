@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "bootstrap@3.4.1",
+      "destination": "lib/bootstrap/",
+      "files": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    {
+      "library": "jquery@3.6.0",
+      "destination": "lib/jquery/",
+      "files": [
+        "dist/jquery.min.js"
+      ]
+    },
+    {
+      "library": "modernizr@2.8.3",
+      "destination": "lib/modernizr/",
+      "files": [
+        "modernizr.js"
+      ]
+    },
+    {
+      "library": "jquery-validate@1.19.5",
+      "destination": "lib/jquery-validate/",
+      "files": [
+        "dist/jquery.validate.min.js"
+      ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "lib/jquery-validation-unobtrusive/",
+      "files": [
+        "dist/jquery.validate.unobtrusive.min.js"
+      ]
+    }
+  ]
+}

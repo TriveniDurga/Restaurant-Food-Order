@@ -1,0 +1,36 @@
+﻿@model TestProject.Models.OrderSuccessViewModel
+@{
+    ViewBag.Title = "Order Success";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-success" style="padding:20px;">
+            <h3 class="text-center">Order Confirmed</h3>
+
+            <p><strong>Customer:</strong> @Model.CustomerName</p>
+            <p><strong>Phone:</strong> @Model.CustomerPhone</p>
+
+            <h4>Items Ordered</h4>
+            @if (Model.OrderedItems != null && Model.OrderedItems.Any())
+            {
+                <ul>
+                    @foreach (var item in Model.OrderedItems)
+                    {
+                        <li>@item.ItemName (@item.ItemType)</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No items recorded.</p>
+            }
+
+            <div class="text-center" style="margin-top:15px;">
+                <form method="get" action="@Url.Action("CreateOrder", "Restaurant")">
+                    <button type="submit" class="btn btn-primary">OK</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
